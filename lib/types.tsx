@@ -5,3 +5,9 @@ export type SideNavItem = {
   submenu?: boolean;
   subMenuItems?: SideNavItem[];
 };
+
+export type Country = {
+  name: string;
+  code: string;
+  continentGroup: string;
+};

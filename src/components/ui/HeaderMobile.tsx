@@ -9,8 +9,7 @@ import type { SideNavItem } from "lib/types";
 import { motion, useCycle } from "framer-motion";
 import type { SVGMotionProps } from "framer-motion";
 import Image from "next/image";
-import { SignInButton, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
-import { Button } from "./button";
+import { SignedIn, UserButton } from "@clerk/nextjs";
 
 type MenuItemWithSubMenuProps = {
   item: SideNavItem;
@@ -123,7 +122,13 @@ const MenuToggle = ({ toggle }: { toggle: () => void }) => (
       <svg width="23" height="23" viewBox="0 0 23 23">
         <Path
           variants={{
-            closed: { d: "M 2 2.5 L 20 2.5" },
+            _closed: { d: "M 2 2.5 L 20 2.5" },
+            get closed() {
+              return this._closed;
+            },
+            set closed(value) {
+              this._closed = value;
+            },
             open: { d: "M 3 16.5 L 17 2.5" },
           }}
         />

@@ -1,10 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import Link from "next/link";
 import { cn } from "lib/utils";
-import { Button } from "@/components/ui/button";
 import { SIDENAV_ITEMS } from "@/constants";
-import type { SideNavItem } from "lib/types";
 import { buttonVariants } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
 
