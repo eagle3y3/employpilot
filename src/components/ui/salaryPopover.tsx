@@ -17,8 +17,10 @@ export function SalaryPopOver() {
       <PopoverContent className="mr-4 w-60">
         <div className="grid gap-4">
           <div className="space-y-2">
-            <h4 className="font-medium leading-none">Dimensions</h4>
-            <p className="text-sm text-muted-foreground">Set the dimensions</p>
+            <h4 className="font-medium leading-none">Salary</h4>
+            <p className="text-sm text-muted-foreground">
+              Set the minimum income
+            </p>
           </div>
           <div className="h-9">
             <Slider min={5000} max={300000} step={5000} className="p-1" />

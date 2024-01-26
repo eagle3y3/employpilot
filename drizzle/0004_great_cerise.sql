@@ -1,0 +1,1 @@
+ALTER TABLE `google_urls` DROP INDEX `google_urls__searchTerm__idx`;

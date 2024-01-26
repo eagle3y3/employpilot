@@ -7,7 +7,10 @@ import {
   timestamp,
   uniqueIndex,
   varchar,
+  tinyint,
+  mediumint,
 } from "drizzle-orm/mysql-core";
+import { nanoid } from "nanoid";
 
 export const accounts = mysqlTable(
   "accounts",
@@ -16,6 +19,8 @@ export const accounts = mysqlTable(
     userId: varchar("userId", { length: 191 }).notNull(),
     type: varchar("type", { length: 191 }).notNull(),
     provider: varchar("provider", { length: 191 }).notNull(),
+    provides: varchar("provides", { length: 191 }).notNull(),
+
     providerAccountId: varchar("providerAccountId", { length: 191 }).notNull(),
     access_token: text("access_token"),
     expires_in: int("expires_in"),
@@ -42,6 +47,7 @@ export const sessions = mysqlTable(
     sessionToken: varchar("sessionToken", { length: 191 }).notNull(),
     userId: varchar("userId", { length: 191 }).notNull(),
     expires: datetime("expires").notNull(),
+
     created_at: timestamp("created_at").notNull().defaultNow(),
     updated_at: timestamp("updated_at").notNull().defaultNow().onUpdateNow(),
   },
@@ -82,5 +88,45 @@ export const verificationTokens = mysqlTable(
     tokenIndex: uniqueIndex("verification_tokens__token__idx").on(
       verificationToken.token,
     ),
+  }),
+);
+
+export const googleUrls = mysqlTable(
+  "google_urls",
+  {
+    id: varchar("id", { length: 191 }).primaryKey().notNull(),
+    url: varchar("url", { length: 2048 }).notNull(), // Store the full URL
+    urlId: varchar("urlId", { length: 255 }).notNull(), // Store the unique part of the URL
+    apiUrl: varchar("apiUrl", { length: 255 }).notNull(),
+    searchTerm: varchar("searchTerm", { length: 255 }).notNull(), // Search term used to find this URL
+    retrievedAt: timestamp("retrievedAt").notNull().defaultNow(), // Timestamp for when the URL was retrieved
+    isProcessed: tinyint("isProcessed").default(0),
+    // Add other fields if necessary
+  },
+  (googleUrl) => ({
+    urlIdIndex: uniqueIndex("google_urls__urlId__idx").on(googleUrl.urlId),
+    // Add other indexes if necessary
+  }),
+);
+
+export const jobs = mysqlTable(
+  "jobs",
+  {
+    jobId: varchar("jobId", { length: 21 }).primaryKey().notNull(),
+    companyName: varchar("companyName", { length: 255 }).notNull(),
+    aboutCompany: text("aboutCompany"), // Provides cutting-edge situational awareness capabilities...
+    responsibilities: text("responsibilities"), // Building reliable infrastructure...
+    urlId: varchar("urlId", { length: 255 }).notNull(),
+    techStack: text("techStack"), // AWS, PostgreSQL, Hadoop...
+    salaryRange: varchar("salaryRange", { length: 255 }), // $120,000-$140,000*
+    salaryHigh: mediumint("salaryHigh"), // 140000
+    jobType: varchar("jobType", { length: 255 }), // Full Time
+    role: varchar("role", { length: 255 }), // Software Engineering
+    minYearsOfExperience: tinyint("minYearsOfExperience"), // 4
+    industry: varchar("industry", { length: 255 }), // Technology
+  },
+  (url) => ({
+    urlIdIndex: index("jobs__urlId__idx").on(url.urlId),
+    // ... other indexes ...
   }),
 );

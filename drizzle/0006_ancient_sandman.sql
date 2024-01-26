@@ -1,0 +1,1 @@
+ALTER TABLE `google_urls` ADD `apiUrl` varchar(255) NOT NULL;
