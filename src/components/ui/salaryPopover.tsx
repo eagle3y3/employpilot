@@ -12,7 +12,7 @@ export function SalaryPopOver() {
   return (
     <Popover>
       <PopoverTrigger asChild>
-        <Button variant="outline">Salary Expectation</Button>
+        <Button variant="outline">Salary Expectations</Button>
       </PopoverTrigger>
       <PopoverContent className="mr-4 w-60">
         <div className="grid gap-4">
