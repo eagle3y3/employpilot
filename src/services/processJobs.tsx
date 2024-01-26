@@ -22,7 +22,7 @@ const openai = new OpenAI({ apiKey: process.env.OPENAI_API_KEY });
 // Function type for fetchPageContent
 type FetchPageContentType = (url: string) => Promise<JobListing | null>;
 interface UpdatedJobDetails extends Omit<JobDetails, "techStack"> {
-  techStack?: string; // techStack is now a string
+  techStack: string | undefined; // techStack is now a string
 }
 
 interface AvailableFunctionsType {
@@ -257,7 +257,7 @@ async function checkIfJobHasNulls(urlId: string): Promise<boolean> {
 async function updateJobRecord(urlId: string, jobDetails: JobDetails) {
   try {
     // Create a new object with the same properties as jobDetails
-    const updatedJobDetails: UpdatedJobDetails = {
+    const updatedJobDetails = {
       ...jobDetails,
       techStack: Array.isArray(jobDetails.techStack)
         ? JSON.stringify(jobDetails.techStack)
