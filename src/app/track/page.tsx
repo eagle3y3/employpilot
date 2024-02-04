@@ -1,3 +1,3 @@
 export default function Track() {
-  return <div>Track</div>;
+  return <div>Coming Soon...</div>;
 }

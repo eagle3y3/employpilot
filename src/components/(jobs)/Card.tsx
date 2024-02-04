@@ -76,7 +76,7 @@ export default function JobCard({ className, ...props }: CardProps & Props) {
       className="relative w-full max-w-sm rounded"
     >
       <Card
-        className={cn("flex  max-h-[750px] w-[345px] flex-col", className)}
+        className={cn("flex  max-h-[750px] w-[350px] flex-col", className)}
         {...props}
       >
         <NewTextAnimation />

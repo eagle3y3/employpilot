@@ -342,3 +342,11 @@ export const LOCATION_ITEMS = [
   { name: "Zambia", code: "ZM", continentGroup: "Africa" },
   { name: "Zimbabwe", code: "ZW", continentGroup: "Africa" },
 ];
+
+export const JOB_TYPE = [
+  "Any Type",
+  "Full Time",
+  "Part Time",
+  "Contract",
+  "Internship",
+];

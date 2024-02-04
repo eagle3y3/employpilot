@@ -1,3 +1,3 @@
 export default function Prepare() {
-  return <div>Prepare</div>;
+  return <div>Coming Soon...</div>;
 }

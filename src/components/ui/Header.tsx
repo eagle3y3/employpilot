@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Button } from "./button";
 import useScroll from "@/hooks/use-scroll";
 import { useSelectedLayoutSegment } from "next/navigation";
+import Image from "next/image";
 
 export default function Header() {
   const scrolled = useScroll(5);
@@ -26,8 +27,9 @@ export default function Header() {
             href="/"
             className="flex flex-row items-center justify-center space-x-3 md:hidden"
           >
-            <span className="h-7 w-7 rounded-lg bg-zinc-300" />
-            <span className="flex text-xl font-bold ">Logo</span>
+            <Image src={"/logo.png"} height={30} width={30} alt="logo plane" />
+
+            <span className="flex text-xl font-bold ">EmployPilot</span>
           </Link>
         </div>
 

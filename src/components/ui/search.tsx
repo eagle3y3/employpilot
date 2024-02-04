@@ -1,6 +1,6 @@
 "use client";
 
-import { CountryCombobox } from "./countryCombobox";
+import { CountryCombobox } from "../(jobs)/search/countryCombobox";
 import { Input } from "./input";
 import { Label } from "./label";
 import RemoteSwitch from "./remoteSwitch";

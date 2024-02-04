@@ -5,6 +5,7 @@ import { cn } from "lib/utils";
 import { SIDENAV_ITEMS } from "@/constants";
 import { buttonVariants } from "@/components/ui/button";
 import { usePathname } from "next/navigation";
+import Image from "next/image";
 
 function SideNav() {
   const pathname = usePathname();
@@ -16,7 +17,8 @@ function SideNav() {
           href="/"
           className="flex h-12 w-full flex-row items-center justify-center space-x-3 border-b border-zinc-200 md:justify-start md:px-6"
         >
-          <span className="h-7 w-7 rounded-lg bg-zinc-300" />
+          <Image src={"/logo.png"} height={35} width={35} alt="logo plane" />
+
           <span className="hidden text-xl font-bold md:flex">EmployPilot</span>
         </Link>
         {SIDENAV_ITEMS.map((item) => {
