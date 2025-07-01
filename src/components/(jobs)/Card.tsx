@@ -91,7 +91,7 @@ export default function JobCard({ className, ...props }: CardProps & Props) {
             <BellIcon />
             <div className="flex-1 space-y-1">
               <p className="text-sm font-medium leading-none">
-                Push Noificationst
+                Push Notifications
               </p>
               <p className="text-sm text-muted-foreground">
                 Send notifications to device.
