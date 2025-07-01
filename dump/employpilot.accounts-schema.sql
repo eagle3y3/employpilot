@@ -1,0 +1,20 @@
+CREATE TABLE `accounts` (
+  `id` varchar(191) NOT NULL,
+  `userId` varchar(191) NOT NULL,
+  `type` varchar(191) NOT NULL,
+  `provider` varchar(191) NOT NULL,
+  `providerAccountId` varchar(191) NOT NULL,
+  `access_token` text,
+  `expires_in` int DEFAULT NULL,
+  `id_token` text,
+  `refresh_token` text,
+  `refresh_token_expires_in` int DEFAULT NULL,
+  `scope` varchar(191) DEFAULT NULL,
+  `token_type` varchar(191) DEFAULT NULL,
+  `createdAt` timestamp NOT NULL DEFAULT (now()),
+  `updatedAt` timestamp NOT NULL DEFAULT (now()) ON UPDATE CURRENT_TIMESTAMP,
+  `provides` varchar(191) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `accounts__provider__providerAccountId__idx` (`provider`,`providerAccountId`),
+  KEY `accounts__userId__idx` (`userId`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

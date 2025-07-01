@@ -1,11 +1,12 @@
-import { drizzle } from "drizzle-orm/planetscale-serverless";
+import { drizzle } from "drizzle-orm/mysql2";
+import mysql from "mysql2/promise";
 
-import { connect } from "@planetscale/database";
-
-const connection = connect({
+const pool = mysql.createPool({
   host: process.env.DATABASE_HOST,
-  username: process.env.DATABASE_USERNAME,
+  user: process.env.DATABASE_USERNAME,
   password: process.env.DATABASE_PASSWORD,
+  database: process.env.DATABASE_NAME,
+  port: Number(process.env.DATABASE_PORT), // usually 3306 or the proxy port
 });
 
-export const db = drizzle(connection);
+export const db = drizzle(pool);
